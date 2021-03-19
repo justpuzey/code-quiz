@@ -18,7 +18,7 @@ body {
   margin-top: 25px;
   padding: 25px;
 }
-h1 {
+h2 {
   text-align: center;
 }
 button {
@@ -47,4 +47,10 @@ ul li {
 }
 li:hover {
   background-color: var(--hover);
+}
+.question-result {
+  border-top: 1px solid gray;
+  text-align: center;
+  padding: 5px;
+  margin-top: 5px;
 }

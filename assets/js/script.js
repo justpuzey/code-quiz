@@ -30,24 +30,32 @@ var questions = [
 
 ];
 
-//Start the quiz when button clicked
+var questionIndex = ""
+var timerStartAmount = questions.length * 20;
+var questionEl = document.querySelector("h2");
+var pEl = document.querySelector("p");
+var optionsUl = ""
 
+//Start the quiz when button clicked
 var startEl = document.querySelector("#start-btn");
 startEl.addEventListener("click", function () {
 
-  alert("start the quiz!")
-  renderQ(0)
+  //Remove Button
+  startEl.remove();
 
+  questionIndex = 0
+  renderQ(questionIndex)
 });
 
 //Render a New question
 var renderQ = function (questionIndex) {
-  var questionEl = document.querySelector("h1");
-  var pEl = document.querySelector("p");
+
+  optionsUl = document.querySelector("#optionsUl");
 
   //clear out the heading text
   questionEl.innerHTML = "";
   pEl.innerHTML = "";
+  optionsUl.innerHTML = "";
 
   //render question
   questionEl.textContent = questions[questionIndex].title;
@@ -55,12 +63,39 @@ var renderQ = function (questionIndex) {
   //append list items to ul
   var optionsUl = document.querySelector("#optionsUl");
 
-
   for (i = 0; i < questions[questionIndex].options.length; i++) {
     var optionItem = document.createElement("li")
     optionItem.textContent = questions[questionIndex].options[i];
     optionsUl.appendChild(optionItem);
+    optionItem.addEventListener("click", (evaluate));
   }
 }
 
+var evaluate = function (event) {
+  var selectedEl = event.target.textContent;
+  var questionResult = document.querySelector('#question-result');
+  optionsUl = document.querySelector("#optionsUl");
+  questionResult.classList.add("question-result")
+
+  if (selectedEl === questions[questionIndex].answer) {
+    questionResult.textContent = "Correct! The answer is: " + questions[questionIndex].answer;
+  }
+  else {
+    questionResult.textContent = "Sorry, that is incorrect. The correct answer is: " + questions[questionIndex].answer;
+  };
+
+  console.log('index = ' + (questionIndex + 1))
+  console.log('questions = ' + questions.length)
+
+  if ((questionIndex + 1) == questions.length) {
+    questionEl.innerHTML = "";
+    optionsUl.innerHTML = "";
+    questionEl.textContent = "all done";
+    pEl.textContent = "Your final score is 22"
+  }
+  else {
+    questionIndex++
+    renderQ(questionIndex)
+  }
+}
 
