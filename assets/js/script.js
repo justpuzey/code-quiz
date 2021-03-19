@@ -177,7 +177,7 @@ var endQuiz = function () {
     }
     highScores.push(finalScore);
     var newScore = JSON.stringify(highScores);
-    localStorage.setItem("allScores", newScore);
+    localStorage.setItem("highScores", newScore);
 
     window.location.replace("./assets/HTML/highscores.html");
   });

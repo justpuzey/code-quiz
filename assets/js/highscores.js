@@ -1,4 +1,4 @@
-var highScoreBtn = document.querySelector("#highScore");
+var highScoreUl = document.querySelector("#highScoreUl");
 var clearBtn = document.querySelector("#clear");
 var goBackBtn = document.querySelector("#go-back");
 
@@ -15,8 +15,8 @@ if (highScores !== null) {
   for (var i = 0; i < highScores.length; i++) {
 
     var createLi = document.createElement("li");
-    createLi.textContent = allScores[i].initials + " " + allScores[i].score;
-    highScore.appendChild(createLi);
+    createLi.textContent = highScores[i].initials + " " + highScores[i].score;
+    highScoreUl.appendChild(createLi);
 
   }
 }

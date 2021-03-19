@@ -7,7 +7,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
 .heading {
   display: flex;
   flex-direction: row;
@@ -46,7 +45,6 @@ button#start-btn {
 button:hover {
   background-color: var(--hover);
 }
-
 a.button{
   color:initial;
   text-decoration: none;
@@ -56,7 +54,6 @@ p{
 }
 ul {
   list-style-type: none;
-  
 }
 ul li {
   padding: 2px;
@@ -65,6 +62,12 @@ ul li {
   margin:2px;
   padding:5px;
   border-radius: 5px;
+}
+ul#highScoreUl li{
+  background-color: var(--scores);
+  color: var(--primary);
+  margin-left: -40px;
+  border-radius: 0px;
 }
 li:hover {
   background-color: var(--hover);
