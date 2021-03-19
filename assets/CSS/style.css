@@ -1,10 +1,20 @@
 :root {
-  --primary: rebeccapurple;
-  --hover: purple;
+  --primary: #2d1159;
+  --hover: #ba67db;
   --white-text: white;
+  --scores: #c8bed1;
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+a {
+  color:var(--hover) ;
 }
 .row-wrapper {
   display: flex;
@@ -22,13 +32,24 @@ h2 {
   text-align: center;
 }
 button {
+  padding: 2px 5px;
   color: var(--white-text);
   background-color: var(--primary);
-  padding: 10px;
   border-radius: 5px;
+}
+button#start-btn {
+  padding: 10px;
   position: relative;
   width: 100px;
   left: 150px;
+}
+button:hover {
+  background-color: var(--hover);
+}
+
+a.button{
+  color:initial;
+  text-decoration: none;
 }
 p{
   text-align: center;
@@ -53,4 +74,7 @@ li:hover {
   text-align: center;
   padding: 5px;
   margin-top: 5px;
+}
+button #submit {
+  padding: 2px;
 }

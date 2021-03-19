@@ -8,21 +8,28 @@
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-  <div>
-    <a href="./assets/HTML/highscores.html">View high scores</a>
-  </div>
+  <section class="heading">
+    <div>
+      <a href="./assets/HTML/highscores.html">View high scores</a>
+    </div>
+    <div id="timer">
+      Time: 0
+    </div>
+  </section>
   <main class="row-wrapper">
     <div id="time-box"></div>
     <div class="border-box">
-      <h2>Coding Quiz Challenge</h2>
-      <p>
-        Try to answer the following code-related questions within the time limit. 
-        Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-      </p>
-      <ul id="optionsUl"></ul>
-      <button id="start-btn">
-        Start Quiz
-      </button>
+      <div class="question-div">
+        <h2>Coding Quiz Challenge</h2>
+        <p>
+          Try to answer the following code-related questions within the time limit. 
+          Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+        </p>
+        <ul id="optionsUl"></ul>
+        <button id="start-btn">
+          Start Quiz
+        </button>
+    </div>
       <div id="question-result"></div>
     </div>
   </main>
