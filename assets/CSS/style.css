@@ -62,11 +62,11 @@ ul li {
   margin:2px;
   padding:5px;
   border-radius: 5px;
+  margin-left: -40px;
 }
 ul#highScoreUl li{
   background-color: var(--scores);
   color: var(--primary);
-  margin-left: -40px;
   border-radius: 0px;
 }
 li:hover {

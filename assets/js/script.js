@@ -1,76 +1,82 @@
 
 
-//questions array
+//----------------------------------------------
+//QUESTION ARRAY
 var questions = [
   {
-    title: "Commonly used data types DO NOT include:",
-    options: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
+    question: "Which of the following is true about variable naming conventions in JavaScript?",
+    options: [
+      "JavaScript variable names must begin with a letter or the underscore character",
+      "JavaScript variable names are case sensitive",
+      "Both of the above",
+      "None of the above"],
+    answer: "Both of the above"
   },
   {
-    title: "The condition in an if / else statement is enclosed within ____.",
-    options: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses"
+    question: "Which of the following is the correct syntax to print a page using JavaScript?",
+    options: [
+      "window.print();",
+      "browser.print();",
+      "navigator.print();",
+      "document.print();"],
+    answer: "window.print();"
   },
   {
-    title: "Arrays in Javascript can be used to store ____.",
-    options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-    answer: "all of the above"
+    question: "Which of the following type of variable takes precedence over other if names are same?",
+    options: [
+      "global variable;",
+      "local variable",
+      "Both of the above.",
+      "None of the above"],
+    answer: "local variable"
   },
   {
-    title: "String values must be enclosed within ____ when being assigned to variables.",
+    question: "String values must be enclosed within ____ when being assigned to variables.",
     options: ["commas", "curly brackets", "quotes", "parenthesis"],
     answer: "quotes"
   },
   {
-    title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
+    question: "A very useful tool for used during development and debugging for printing content to the debugger is:",
     options: ["Javascript", "terminal / bash", "for loops", "console log"],
     answer: "console log"
   },
-
 ];
 
-var questionIndex = ""
-var timerEl = document.querySelector("#timer");
-var timerStart = questions.length * 15;
-var timeLeft = 0;
 var questionEl = document.querySelector("h2");
 var pEl = document.querySelector("p");
-var optionsUl = ""
+var timerEl = document.querySelector("#timer");
 var questionResult = document.querySelector('#question-result');
+var questionIndex = ""
+var timerStart = questions.length * 15;
+var timeLeft = 0;
+var optionsUl = ""
 
-//Start the quiz when button clicked
+
+//----------------------------------------------
+//START QUIZ
 var startEl = document.querySelector("#start-btn");
 startEl.addEventListener("click", function () {
-
   //Remove Button
   startEl.remove();
-
   //Start the timer
   setTtimer()
   //Render the first question
   questionIndex = 0
   renderQ(questionIndex)
-
-
 });
 
-//Render a New question
+//----------------------------------------------
+//RENDER QUESTIONS
 var renderQ = function (questionIndex) {
-
   optionsUl = document.querySelector("#optionsUl");
-
   //clear out the heading text
   questionEl.innerHTML = "";
   pEl.innerHTML = "";
   optionsUl.innerHTML = "";
-
   //render question
-  questionEl.textContent = questions[questionIndex].title;
-
+  questionEl.textContent = questions[questionIndex].question;
   //append list items to ul
   var optionsUl = document.querySelector("#optionsUl");
-
   for (i = 0; i < questions[questionIndex].options.length; i++) {
     var optionItem = document.createElement("li")
     optionItem.textContent = questions[questionIndex].options[i];
@@ -81,29 +87,22 @@ var renderQ = function (questionIndex) {
 //----------------------------------------------
 //TIMER FUNCTION
 var setTtimer = function () {
-
-
   var holdInterval = 0;
   timeLeft = timerStart;
-
-  holdInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = "Time: " + timeLeft;
-
     if (timeLeft <= 0) {
-      clearInterval(holdInterval);
+      clearInterval(timerInterval);
       timerEl.textContent = "Time's up!";
       endQuiz();
-
     }
   }, 1000);
-
 }
 //----------------------------------------------
 //EVALUATE SELECTED RESPONSE TO QUESTION
 var evaluate = function (event) {
   var selectedEl = event.target.textContent;
-
   optionsUl = document.querySelector("#optionsUl");
   questionResult.classList.add("question-result")
 
@@ -114,10 +113,8 @@ var evaluate = function (event) {
     questionResult.textContent = "Sorry, that is incorrect. The correct answer is: " + questions[questionIndex].answer;
     timeLeft -= 10;
   };
-
   console.log('index = ' + (questionIndex + 1))
   console.log('questions = ' + questions.length)
-
   if ((questionIndex + 1) == questions.length) {
     endQuiz();
   }
@@ -128,15 +125,12 @@ var evaluate = function (event) {
 }
 //----------------------------------------------
 //END QUIZ FUNCTION
-
 var questionDiv = document.querySelector('.question-div');
-
 var endQuiz = function () {
   questionEl.innerHTML = "";
   optionsUl.innerHTML = "";
   questionEl.textContent = "All done!";
   pEl.textContent = "Your final score is " + timeLeft
-
   // Label
   var createLabel = document.createElement("label");
   createLabel.setAttribute("id", "createLabel");
