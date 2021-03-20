@@ -31,13 +31,21 @@ var questions = [
     answer: "local variable"
   },
   {
-    question: "String values must be enclosed within ____ when being assigned to variables.",
-    options: ["commas", "curly brackets", "quotes", "parenthesis"],
-    answer: "quotes"
+    question: "Which built-in method returns the calling string value converted to upper case?",
+    options: [
+      "toUpperCase()",
+      "toUpper()",
+      "changeCase(case)",
+      "None of the above"],
+    answer: "toUpperCase()"
   },
   {
-    question: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-    options: ["Javascript", "terminal / bash", "for loops", "console log"],
+    question: "Which of the following function of Boolean object returns the primitive value of the Boolean object?",
+    options: [
+      "toSource()",
+      "valueOf()",
+      "toString()",
+      "None of the above"],
     answer: "console log"
   },
 ];
@@ -46,11 +54,11 @@ var questionEl = document.querySelector("h2");
 var pEl = document.querySelector("p");
 var timerEl = document.querySelector("#timer");
 var questionResult = document.querySelector('#question-result');
-var questionIndex = ""
+var isQuizCompleted = false;
+var questionIndex = "";
 var timerStart = questions.length * 15;
 var timeLeft = 0;
-var optionsUl = ""
-
+var optionsUl = "";
 
 //----------------------------------------------
 //START QUIZ
@@ -86,17 +94,18 @@ var renderQ = function (questionIndex) {
 }
 //----------------------------------------------
 //TIMER FUNCTION
+var timerInterval = 0;
 var setTtimer = function () {
-  var holdInterval = 0;
   timeLeft = timerStart;
   timerInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = "Time: " + timeLeft;
-    if (timeLeft <= 0) {
+    if (timeLeft <= 0 || isQuizCompleted) {
       clearInterval(timerInterval);
       timerEl.textContent = "Time's up!";
       endQuiz();
     }
+
   }, 1000);
 }
 //----------------------------------------------
@@ -115,8 +124,8 @@ var evaluate = function (event) {
   };
   console.log('index = ' + (questionIndex + 1))
   console.log('questions = ' + questions.length)
-  if ((questionIndex + 1) == questions.length) {
-    endQuiz();
+  if ((questionIndex + 1) === questions.length) {
+    isQuizCompleted = true;
   }
   else {
     questionIndex++
@@ -125,6 +134,7 @@ var evaluate = function (event) {
 }
 //----------------------------------------------
 //END QUIZ FUNCTION
+if (timerInterval > 0) { clearInterval(timerInterval); }
 var questionDiv = document.querySelector('.question-div');
 var endQuiz = function () {
   questionEl.innerHTML = "";
