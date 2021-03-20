@@ -46,7 +46,7 @@ var questions = [
       "valueOf()",
       "toString()",
       "None of the above"],
-    answer: "console log"
+    answer: "toSource()"
   },
 ];
 
@@ -67,7 +67,7 @@ startEl.addEventListener("click", function () {
   //Remove Button
   startEl.remove();
   //Start the timer
-  setTtimer()
+  setTimer()
   //Render the first question
   questionIndex = 0
   renderQ(questionIndex)
@@ -95,7 +95,7 @@ var renderQ = function (questionIndex) {
 //----------------------------------------------
 //TIMER FUNCTION
 var timerInterval = 0;
-var setTtimer = function () {
+var setTimer = function () {
   timeLeft = timerStart;
   timerInterval = setInterval(function () {
     timeLeft--;
